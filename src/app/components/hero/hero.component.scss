@@ -1,0 +1,75 @@
+@use "../../../styles.scss" as *;
+
+.hero {
+  padding: 2rem 0 0 5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__left {
+    flex: 1;
+    h1 {
+      font-size: 70px;
+      font-weight: 800;
+      line-height: 1;
+      color: var(--very-dark-violet);
+      margin-bottom: 1rem;
+    }
+
+    p {
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 1.2;
+      color: var(--grayish-violet);
+      margin-bottom: 1rem;
+    }
+
+    button {
+      background-color: var(--cyan);
+      color: #fff;
+      padding: 1rem 2rem;
+      border-radius: 2rem;
+      border: none;
+      cursor: pointer;
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 1.2;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        opacity: 0.6;
+      }
+    }
+  }
+
+  &__right {
+    flex: 1;
+    img {
+      width: 120%;
+      height: 120%;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 1rem;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: center;
+
+    &__left {
+      text-align: center;
+      h1 {
+        font-size: 40px;
+      }
+    }
+    &__right {
+      overflow-x: hidden;
+      img {
+        width: 150%;
+        height: 150%;
+      }
+    }
+  }
+}

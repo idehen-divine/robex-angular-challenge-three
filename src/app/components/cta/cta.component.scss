@@ -1,0 +1,51 @@
+@use "../../../styles.scss" as *;
+
+.cta {
+  background-image: url("/images/bg-boost-desktop.svg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: var(--dark-violet);
+  padding: 3rem 0;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    h2 {
+      font-size: 2rem;
+      font-weight: 800;
+      line-height: 1.5;
+      color: #fff;
+      margin-bottom: 1rem;
+    }
+
+    button {
+      background-color: var(--cyan);
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 700;
+      padding: 1rem 2rem;
+      border-radius: 2rem;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        opacity: 0.6;
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    background-image: url("/images/bg-boost-mobile.svg");
+
+    &__container {
+      h2 {
+        font-size: 1.5rem;
+      }
+    }
+  }
+}

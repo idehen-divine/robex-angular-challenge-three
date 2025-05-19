@@ -1,0 +1,49 @@
+/* You can add global styles to this file, and also import other style files */
+
+:root {
+    /* Primary Colors */
+    --cyan: hsl(180, 66%, 49%);
+    --dark-violet: hsl(257, 27%, 26%);
+
+    /* Secondary Colors */
+    --red: hsl(0, 87%, 67%);
+
+    /* Neutral Colors */
+    --gray: hsl(0, 0%, 75%);
+    --grayish-violet: hsl(257, 7%, 63%);
+    --very-dark-blue: hsl(255, 11%, 22%);
+    --very-dark-violet: hsl(260, 8%, 14%);
+}
+
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.5;
+    color: var(--very-dark-blue);
+    min-height: 100vh;
+    background-color: #f7f6f6;
+    overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 700;
+    color: var(--very-dark-violet);
+}
+
+.no-scroll {
+    overflow: hidden;
+    height: 100vh;
+}

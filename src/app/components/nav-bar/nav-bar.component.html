@@ -1,0 +1,38 @@
+<header>
+  <div class="nav-bar">
+    <div class="nav-bar__left">
+      <img src="./images/logo.svg" alt="Shortly Logo" />
+      <div class="links">
+        <a href="#">Features</a>
+        <a href="#">Pricing</a>
+        <a href="#">Resources</a>
+      </div>
+    </div>
+    <div class="nav-bar__right">
+      <button class="menu" aria-label="Open menu" (click)="toggleMobileMenu()">
+        <img src="./images/icon-menu.svg" alt="menu" />
+      </button>
+      <button class="login">Login</button>
+      <button class="sign-up">Sign Up</button>
+    </div>
+  </div>
+</header>
+
+<div
+  class="mobile-backdrop"
+  *ngIf="isMobileMenuOpen"
+  (click)="toggleMobileMenu()"
+>
+</div>
+
+<nav class="mobile-side-menu" [class.open]="isMobileMenuOpen">
+  <a href="#">Features</a>
+  <a href="#">Pricing</a>
+  <a href="#">Resources</a>
+
+  <hr />
+
+  <a href="#" class="login">Login</a>
+  <a href="#" class="signup-button">Sign Up</a>
+</nav>
+
