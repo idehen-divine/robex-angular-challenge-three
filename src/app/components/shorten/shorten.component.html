@@ -1,7 +1,36 @@
 <section class="shorten">
-    <form action="">
-        <input type="text" placeholder="Shorten a link here...">
-        <button type="submit">Shorten It!</button>
+  <div class="shorten-container">
+    <form (ngSubmit)="shortenUrl()" #form="ngForm">
+      <label for="longUrl">
+        <input
+          type="text"
+          id="longUrl"
+          [(ngModel)]="longUrl"
+          name="longUrl"
+          placeholder="Shorten a link here..."
+          [class.error]="error"
+          required
+        />
+        <small *ngIf="error" class="error-message">{{ error }}</small>
+      </label>
+      <button type="submit">Shorten It!</button>
     </form>
-</section>
+  </div>
 
+  <div *ngFor="let link of shortenedLinks">
+    <div class="shortened-box">
+      <span class="original">{{ link.longUrl }}</span>
+      <div class="shortened-actions">
+        <a class="short" [href]="link.shortUrl" target="_blank">{{
+          link.shortUrl
+        }}</a>
+        <button
+          [ngClass]="{ copied: copiedUrl === link.shortUrl }"
+          (click)="copyToClipboard(link.shortUrl)"
+        >
+          {{ copiedUrl === link.shortUrl ? "Copied!" : "Copy" }}
+        </button>
+      </div>
+    </div>
+  </div>
+</section>

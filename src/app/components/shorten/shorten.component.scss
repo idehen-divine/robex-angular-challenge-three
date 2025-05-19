@@ -2,57 +2,125 @@
 
 .shorten {
   margin: 2rem 5rem;
-  padding: 3rem 3rem;
-  background: url("/images/bg-shorten-desktop.svg") no-repeat;
-  background-size: 100% 99%;
-  background-position: center;
-  background-color: var(--dark-violet);
-  border-radius: 0.5rem;
+  .shorten-container {
+    padding: 3rem 3rem;
+    background: url("/images/bg-shorten-desktop.svg") no-repeat;
+    background-size: 100% 99%;
+    background-position: center;
+    background-color: var(--dark-violet);
+    border-radius: 0.5rem;
 
-  form {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 1rem;
+    form {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      gap: 1rem;
 
-    input {
-      width: 100%;
-      padding: 1rem 2rem;
-      border-radius: 0.5rem;
-      border: none;
-      cursor: pointer;
-      font-size: 1.5rem;
-    }
+      input {
+        width: 100%;
+        padding: 1rem 2rem;
+        border-radius: 0.5rem;
+        border: 2px solid transparent;
+        cursor: pointer;
+        font-size: 1.5rem;
 
-    button {
-      background-color: var(--cyan);
-      color: #fff;
-      padding: 1rem 2rem;
-      border-radius: 0.5rem;
-      border: none;
-      cursor: pointer;
-      font-size: 1.5rem;
-      white-space: nowrap;
+        &.error {
+          border: 2px solid red;
+        }
+      }
+
+      .error-message {
+        color: red;
+        font-size: 0.8rem;
+      }
+
+      button {
+        background-color: var(--cyan);
+        color: #fff;
+        padding: 1rem 2rem;
+        border-radius: 0.5rem;
+        border: none;
+        cursor: pointer;
+        font-size: 1.5rem;
+        white-space: nowrap;
+      }
     }
   }
 
-  @media (max-width: 768px) {
-    margin: 2rem 1rem;
-    padding: 2rem 1rem;
-    background: url("/images/bg-shorten-mobile.svg") no-repeat;
-    background-color: var(--dark-violet);
-    background-size: 80%;
-    background-position: top right;
+  .shortened-box {
+    background: fff;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
 
-    form {
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
+    .original {
+      font-size: 1.5rem;
+      word-break: break-word;
+      color: var(--very-dark-violet);
+    }
+
+    .shortened-actions {
+      display: flex;
+      align-items: start;
       gap: 1rem;
 
+      .short {
+        color: var(--cyan);
+        text-decoration: none;
+        font-weight: bold;
+      }
+
       button {
-        width: 100%;
+        background-color: var(--cyan);
+        color: #fff;
+        padding: 1rem 2rem;
         border-radius: 0.5rem;
+        border: none;
+        cursor: pointer;
+        font-size: 1rem;
+        white-space: nowrap;
+        width: 100%;
+
+        &.copied {
+          background-color: var(--dark-violet);
+        }
+      }
+    }
+  }
+  @media (max-width: 768px) {
+    margin: 2rem 1rem;
+    .shorten-container {
+      padding: 2rem 1rem;
+      background: url("/images/bg-shorten-mobile.svg") no-repeat;
+      background-color: var(--dark-violet);
+      background-size: 80%;
+      background-position: top right;
+
+      form {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+
+        button {
+          width: 100%;
+          border-radius: 0.5rem;
+        }
+      }
+    }
+    .shortened-box {
+      flex-direction: column;
+
+      .original {
+        border-bottom: 1px solid var(--grayish-violet);
+      }
+
+      .shortened-actions {
+        flex-direction: column;
       }
     }
   }
