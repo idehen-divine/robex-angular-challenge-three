@@ -1,10 +1,15 @@
 {pkgs}: {
   channel = "stable-24.05";
   packages = [
-    pkgs.nodejs_20
+    pkgs.nodejs_2
+    pkgs.yarn 
+    pkgs.nano
   ];
   idx.extensions = [
     "angular.ng-template"
+    "dbaeumer.vscode-eslint"
+    "sourcegraph.cody-ai"
+    "usernamehw.errorlens"
   ];
   idx.previews = {
     previews = {
