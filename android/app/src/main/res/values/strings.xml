@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">shortly</string>
+    <string name="title_activity_main">shortly</string>
+    <string name="package_name">com.lonely.shortly</string>
+    <string name="custom_url_scheme">com.lonely.shortly</string>
+</resources>
