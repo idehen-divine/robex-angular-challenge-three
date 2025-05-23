@@ -7,7 +7,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "vercel-build": "node vercel-build.js && ng build"
+    "vercel-build": "node vercel-build.js && ng build",
+    "android": "ng build && yarn cap sync android && yarn cap run android --target=emulator"
   },
   "private": true,
   "dependencies": {
@@ -18,6 +19,9 @@
     "@angular/platform-browser": "^19.2.0",
     "@angular/platform-browser-dynamic": "^19.2.0",
     "@angular/router": "^19.2.0",
+    "@capacitor/android": "^7.2.0",
+    "@capacitor/angular": "2.0.3",
+    "@capacitor/core": "latest",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"
@@ -26,6 +30,7 @@
     "@angular-devkit/build-angular": "^19.2.3",
     "@angular/cli": "^19.2.3",
     "@angular/compiler-cli": "^19.2.0",
+    "@capacitor/cli": "latest",
     "@types/jasmine": "~5.1.0",
     "jasmine-core": "~5.6.0",
     "karma": "~6.4.0",
