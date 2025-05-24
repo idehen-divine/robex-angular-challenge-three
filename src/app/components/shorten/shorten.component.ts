@@ -3,7 +3,9 @@ import { FormsModule, NgModel } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ShortenerService } from '../../service/shortner/shortener.service';
 import { UrlInput } from '../../types/short/url-input';
-import { Network } from '@capacitor/network';
+import { Network } from '@capacitor/network'; 
+import { Share } from '@capacitor/share';
+
 
 @Component({
 	selector: 'app-shorten',
@@ -74,7 +76,10 @@ export class ShortenComponent implements OnInit {
 		});
 	}
 
-	copyToClipboard(url: string) {
+	async copyToClipboard(url: string) {
+		await Share.share({
+			url: url,
+		  });
 		navigator.clipboard.writeText(url).then(() => {
 			this.copiedUrl = url;
 			setTimeout(() => (this.copiedUrl = null), 2000);
