@@ -26,27 +26,24 @@ export class ShortenComponent implements OnInit {
 	copiedUrl: string | null = null;
 	offline: boolean = false;
 
-	constructor(
-		private shortenerService: ShortenerService
-	) {
+	toastMessage: string | null = null;
+
+	constructor(private shortenerService: ShortenerService) {
 		this.shortenedLinks = this.shortenerService.getTopShortenedUrls();
 	}
 
 	ngOnInit(): void {
 		Network.addListener('networkStatusChange', (status) => {
-			console.log('Network status changed:', status);
 			this.offline = !status.connected;
 		});
 	}
 
 	shortenUrl() {
-		if(this.offline)
-		{
+		if (this.offline) {
 			this.error = 'You are offline. Please check your internet connection.';
 			this.loading = false;
 			return;
 		}
-		
 		this.error = null;
 		this.loading = true;
 
@@ -80,22 +77,33 @@ export class ShortenComponent implements OnInit {
 	copyToClipboard(url: string) {
 		navigator.clipboard.writeText(url).then(() => {
 			this.copiedUrl = url;
+			this.showToast('Copied to clipboard!');
+			this.vibrate(100);
 			setTimeout(() => (this.copiedUrl = null), 2000);
 		});
 	}
 
 	async shareUrl(url: string) {
 		try {
-			await Share.share({
-				title: 'Check out this short URL!',
-				text: 'Here is a shortened link for you:',
-				url: url,
-				dialogTitle: 'Share this URL',
+			await navigator.share({
+				title: 'Check out this shortened URL',
+				url,
 			});
-		} catch (error) {
-			console.error('Share failed:', error);
-			this.error = 'Could not share the URL';
+			this.showToast('Shared successfully!');
+			this.vibrate(200);
+		} catch (err) {
+			this.showToast('Share canceled or failed');
 		}
 	}
-	  
+
+	showToast(message: string) {
+		this.toastMessage = message;
+		setTimeout(() => (this.toastMessage = null), 3000);
+	}
+
+	vibrate(duration: number) {
+		if (navigator.vibrate) {
+			navigator.vibrate(duration);
+		}
+	}
 }
