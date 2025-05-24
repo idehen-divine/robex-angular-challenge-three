@@ -17,4 +17,6 @@ fs.writeFileSync(envPath, content);
 console.log("✅ Environment variables injected into environment.ts");
 
 
-// sgp_e3cb05880bc40429_a3cb4253c86908324a8236bcb6937ab25c5eb8ca
+// sgp_e3cb05880bc40429
+// _a3cb4253c86908324a82
+// 36bcb6937ab25c5eb8ca

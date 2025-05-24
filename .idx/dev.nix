@@ -5,6 +5,7 @@
   #   "dbaeumer.vscode-eslint"
   #   "sourcegraph.cody-ai"
   #   "usernamehw.errorlens"
+  #   "ionic.ionic"
   # ];
   
   packages = [
