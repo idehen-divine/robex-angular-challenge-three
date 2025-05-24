@@ -8,7 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "vercel-build": "node vercel-build.js && ng build",
-    "android": "ng build && yarn cap sync android && yarn cap run android --target=emulator"
+    "android": "ng build && yarn cap sync android && yarn cap run android"
   },
   "private": true,
   "dependencies": {
