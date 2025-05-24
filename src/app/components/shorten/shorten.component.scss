@@ -65,31 +65,51 @@
 
     .shortened-actions {
       display: flex;
-      align-items: start;
+      align-items: center;
       gap: 1rem;
-
+      flex-wrap: wrap; // optional, ensures good layout on small screens
+    
       .short {
         color: var(--cyan);
         text-decoration: none;
         font-weight: bold;
+        flex-grow: 1;
       }
-
-      button {
-        background-color: var(--cyan);
-        color: #fff;
-        padding: 1rem 2rem;
-        border-radius: 0.5rem;
-        border: none;
-        cursor: pointer;
-        font-size: 1rem;
-        white-space: nowrap;
-        width: 100%;
-
-        &.copied {
-          background-color: var(--dark-violet);
+    
+      .action-buttons {
+        display: flex;
+        gap: 0.5rem;
+    
+        button {
+          display: flex;
+          align-items: center;
+          background-color: var(--cyan);
+          color: #fff;
+          padding: 0.75rem 1.5rem;
+          border-radius: 0.5rem;
+          border: none;
+          cursor: pointer;
+          font-size: 1rem;
+          white-space: nowrap;
+    
+          &.copied {
+            background-color: var(--dark-violet);
+          }
+        
+          &.share-btn {
+            background-color: var(--grayish-violet);
+        
+            &:hover {
+              background-color: var(--very-dark-violet);
+            }
+          }
+    
+          ion-icon {
+            font-size: 1.2rem;
+          }
         }
       }
-    }
+    }    
   }
   @media (max-width: 768px) {
     margin: 2rem 1rem;

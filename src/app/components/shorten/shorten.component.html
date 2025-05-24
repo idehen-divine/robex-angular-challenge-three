@@ -1,36 +1,33 @@
 <section class="shorten">
-  <div class="shorten-container">
-    <form (ngSubmit)="shortenUrl()" #form="ngForm">
-      <label for="longUrl">
-        <input
-          type="text"
-          id="longUrl"
-          [(ngModel)]="longUrl"
-          name="longUrl"
-          placeholder="Shorten a link here..."
-          [class.error]="error"
-          required
-        />
-        <small *ngIf="error" class="error-message">{{ error }}</small>
-      </label>
-      <button type="submit">Shorten It!</button>
-    </form>
-  </div>
+	<div class="shorten-container">
+		<form (ngSubmit)="shortenUrl()" #form="ngForm">
+			<label for="longUrl">
+				<input type="text" id="longUrl" [(ngModel)]="longUrl" name="longUrl"
+					placeholder="Shorten a link here..." [class.error]="error" required />
+				<small *ngIf="error" class="error-message">{{ error }}</small>
+			</label>
+			<button type="submit">Shorten It!</button>
+		</form>
+	</div>
 
-  <div *ngFor="let link of shortenedLinks">
-    <div class="shortened-box">
-      <span class="original">{{ link.longUrl }}</span>
-      <div class="shortened-actions">
-        <a class="short" [href]="link.shortUrl" target="_blank">{{
-          link.shortUrl
-        }}</a>
-        <button
-          [ngClass]="{ copied: copiedUrl === link.shortUrl }"
-          (click)="copyToClipboard(link.shortUrl)"
-        >
-          {{ copiedUrl === link.shortUrl ? "Copied!" : "Copy" }}
-        </button>
-      </div>
-    </div>
-  </div>
+	<div *ngFor="let link of shortenedLinks">
+		<div class="shortened-box">
+			<span class="original">{{ link.longUrl }}</span>
+			<div class="shortened-actions">
+				<a class="short" [href]="link.shortUrl" target="_blank">{{ link.shortUrl }}</a>
+			
+				<div class="action-buttons">
+					<button [ngClass]="{ copied: copiedUrl === link.shortUrl }" (click)="copyToClipboard(link.shortUrl)">
+						<ion-icon name="copy-outline" style="vertical-align: middle; margin-right: 0.5rem;"></ion-icon>
+						{{ copiedUrl === link.shortUrl ? "Copied!" : "Copy" }}
+					</button>
+			
+					<button class="share-btn" (click)="shareUrl(link.shortUrl)">
+						<ion-icon name="share-social-outline" style="vertical-align: middle; margin-right: 0.5rem;"></ion-icon>
+						Share
+					</button>
+				</div>
+			</div>				
+		</div>
+	</div>
 </section>

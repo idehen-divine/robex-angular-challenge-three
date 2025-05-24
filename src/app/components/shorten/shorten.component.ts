@@ -1,9 +1,9 @@
-import { Component, ViewChild, OnInit } from '@angular/core';
+import { Component, ViewChild, OnInit, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormsModule, NgModel } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ShortenerService } from '../../service/shortner/shortener.service';
 import { UrlInput } from '../../types/short/url-input';
-import { Network } from '@capacitor/network'; 
+import { Network } from '@capacitor/network';
 import { Share } from '@capacitor/share';
 
 
@@ -13,6 +13,7 @@ import { Share } from '@capacitor/share';
 	styleUrls: ['./shorten.component.scss'],
 	standalone: true,
 	imports: [CommonModule, FormsModule],
+	schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class ShortenComponent implements OnInit {
 	@ViewChild('urlInput') urlInput!: NgModel;
@@ -76,13 +77,25 @@ export class ShortenComponent implements OnInit {
 		});
 	}
 
-	async copyToClipboard(url: string) {
-		await Share.share({
-			url: url,
-		  });
+	copyToClipboard(url: string) {
 		navigator.clipboard.writeText(url).then(() => {
 			this.copiedUrl = url;
 			setTimeout(() => (this.copiedUrl = null), 2000);
 		});
 	}
+
+	async shareUrl(url: string) {
+		try {
+			await Share.share({
+				title: 'Check out this short URL!',
+				text: 'Here is a shortened link for you:',
+				url: url,
+				dialogTitle: 'Share this URL',
+			});
+		} catch (error) {
+			console.error('Share failed:', error);
+			this.error = 'Could not share the URL';
+		}
+	}
+	  
 }
